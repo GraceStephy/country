@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container" >
+        <div class="card mt-1" style="width: 100%;">
+                  <img src="foodimg.jpeg" alt="Responsive image"  style="height: 200px; width: 100%;">
+                 <div class="text">
+                    <h1 class="img-title fs-1 fw-normal ">DIET CHART</h1>
+                </div>
+        </div>
+        <div class="card-body rounded-3 mt-2 border border-dark">
+            
+            <div style="width: 90%;">
+                <div class="my-3 mx-3 ">
+                  <label class="fw-bold">Email:</label><br>
+                  <input type="email" id="email" placeholder="Enter your email" class="  mt-2 form-control rounded-3">
+                </div>
+                <div>
+                <div class="row">
+                <div class="col-12 col-md-3  col-lg-3 my-3 mx-3">
+                    <label class="fw-bold">Name:</label><br>
+                    <input type="text" id="name" class="form-control mt-2" >
+                </div>
+                <div class="col-12 col-md-3 col-lg-3 my-3 mx-3">
+                    <label  class="fw-bold">Age:</label><br>
+                    <input type="number" id="age" class="form-control mt-2">
+                </div>
+                
+                <div class="col-12 col-md-3 col-lg-3 my-3 mx-3">
+                    <label class="fw-bold">Height(cm):</label><br>
+                    <input type="number"id="height" class="form-control mt-2">
+                </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-12 col-md-3 col-lg-3 my-3 mx-3">
+                    <label class="fw-bold">Weight(kg):</label><br>
+                    <input type="number" id="weight" class="form-control mt-2">
+                </div>
+                <div class="col-12 col-md-3 col-lg-3 my-3 mx-3">
+                    <label class="fw-bold">BMI:</label><br>
+                    <input type="text" id="bmi"class="form-control mt-2">
+                </div>
+                <div class="col-12 col-md-3 col-lg-3 my-3 mx-3">
+                    <label class="fw-bold">Allergies:</label><br>
+                    <input type="text" id="allergies" class="form-control mt-2">
+                </div>
+                </div>
+                <div class="mt-2 my-3 mx-3">
+                    <h2 class="fw-bold text-danger">Diet Plan</h2>
+                </div>
+                <div class="my-3 mx-3">
+                    <label class="fw-bold">Breakfast:</label><br>
+                    <input type="text" id="bfast" class="form-control p-3 mt-2">
+                </div>
+                <div class="my-3 mx-3">
+                    <label class="fw-bold">Lunch:</label><br>
+                    <input type="text" id="lunch" class="form-control p-3 mt-2">
+                </div>
+                <div class="my-3 mx-3">
+                    <label class="fw-bold">Snack:</label><br>
+                    <input type="text" id="snack" class="form-control p-3 mt-2">
+                </div>
+                <div class="my-3 mx-3">
+                    <label class="fw-bold">Dinner:</label><br>
+                    <input type="text" id="dinner" class="form-control p-3 mt-2">
+                </div>
+                <div class="row">
+                <div class="col my-3 mx-3">
+                    <label class="fw-bold mt-3">Dietitian:</label><br>
+                    <input type="text" id="dietitian" class="form-control mt-2 p-2">
+                </div>
+                <div class=" form-group col my-3 mx-3">
+                    <label class="fw-bold mt-3">Date:</label><br>
+                    <input type="date" id="date" class="form-control mt-2 p-2">
+                </div>
+              </div>
+              <center>
+                <div class=" m-3 ">
+                    <input type="button" value="submit" onclick="getvalues()" class="btn btn-primary text-color-white me-3">
+                    <input type="button"  value="reset" onclick="fun()" class="btn btn-danger text-color-white">
+                    <!-- <button type="button"  onclick=getvalues() class="btn btn-primary text-color-white me-3">Submit</button>
+                    <button type="button" onclick=fun() class="btn btn-danger text-color-white">Clear</button> -->
+                </div>
+              </center>
+            
+        </div>
+    </div>
+    <style>
+        /*img style*/
+.card{
+    position: relative;
+    overflow: hidden;
+}
+.card .text{
+  position: absolute;
+  left: 40%;
+  top: 40%;
+ color: bisque;
+}
+/*body */
+.card-body{
+    background-color: rgb(221, 202, 180);
+}
+
+    </style>
+    <script>
+        function getvalues(){
+            //email
+            var email=$("#email").val();
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if(!email.match(emailPattern))
+            {
+                alert("please enter valied email");
+                return;
+            }else{
+                console.log("Email:"+email);
+            }
+            //name
+           var name=$("#name").val();
+             if (name == ""){
+               alert("pls enter  name");
+               return;
+            }  
+            else{
+              console.log("Name:"+name);  
+            }  
+            //age
+            var age=$("#age").val();
+            if(age == ""){
+               alert("pls enter your age");
+               return;
+            }else{
+               console.log("Age:"+age); 
+            }
+            //height
+            var  height=$("#height").val();
+            if(height == ""){
+                alert("pls enter your height");
+                return;
+            }else{
+                console.log("Height:"+height);
+            }
+            //weight
+            var weight=$("#weight").val();
+            if(weight == ""){
+                alert("pls enter your weight");
+                return;
+            }else{
+                 console.log("Weight:"+weight);
+            }
+            //bmi
+           var bmi=$("#bmi").val();
+           if(bmi == ""){
+                alert("pls enter your bmi");
+                return;
+            }else{
+                console.log("Bmi:"+bmi);
+            }
+            //allergies
+            var allergies=$("#allergies").val();
+            if(allergies == ""){
+                alert("pls enter your alleges")
+                return;
+            }else{
+              console.log("allergies:"+allergies);  
+            }
+            //bfast
+            var  bfast=$("#bfast").val();
+            if(bfast == ""){
+                alert("pls enter the brakfast");
+            }else{
+                console.log("breakfast:"+bfast);
+                return;
+            }
+            //lunch
+            var lunch=$("#lunch").val();
+           if(lunch == ""){
+                alert("pls enter the lunch");
+                return;
+            }else{
+                console.log("Lunch:"+lunch);
+            }
+            //snack
+            var snack=$("#snack").val;
+             if(snack == ""){
+                alert("pls enter your snack");
+                return;
+            }else{
+                 console.log("snack:"+snack);
+            }
+            //dinner
+            var dinner=$("#dinner").val();
+            if(snack == ""){
+                alert("pls enter your dinner");
+                return;
+            }else{
+                console.log("dinner:"+dinner);
+            }
+            //dititian
+            var dietitian=$("#dietitian").val();
+            if(dietitian == ""){
+                alert("pls enter your dietitian");
+                return;
+            }else{
+              console.log("dietitian:"+dietitian);
+            }
+           //date validation
+           var  date=$("#date").val();
+            var currentDate = new Date();
+             currentDate.setHours(0,0,0,0);
+             var selectedDate = new Date(date);
+             if (selectedDate < currentDate)
+             {
+                console.log("Please select a valid date. Past dates are not allowed.");
+                return; 
+             }else{
+                  console.log("Date:"+date);
+             }
+            //clear button 
+        } 
+        function fun(){
+                $("#dinner").val("");
+                $("#lunch").val("");
+                $("#email").val("");
+                $("#name").val("");
+                $("#age").val("");
+                $("#height").val("");
+                $("#weight").val("");
+                $("#bmi").val("");
+                $("#allergies").val("");
+                $("#bfast").val("");
+                $("#snack").val("");
+                $("#dietitian").val("");
+                $("#date").val("");
+               // document.getElementById("").reset;
+            }
+    </script>
+</body>
+</html>
